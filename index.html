@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baralho de Truques de Mágica para Festa Infantil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C1030;
+    --purple-deep:#2A1554;
+    --purple-mid:#3E2378;
+    --purple-soft:#4E2C93;
+    --gold:#E3B23C;
+    --gold-light:#F3D98B;
+    --cream:#FBF6EC;
+    --cream-dim:#F2EADA;
+    --crimson:#B23A3A;
+    --green:#3F7D5C;
+    --max:1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Manrope', sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+    line-height:1.1;
+    font-weight:600;
+  }
+  p{margin:0;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 24px;}
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+
+  /* stars texture */
+  .stars{
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 10% 20%, var(--gold-light) 60%, transparent 61%),
+      radial-gradient(1.5px 1.5px at 80% 15%, var(--gold-light) 60%, transparent 61%),
+      radial-gradient(1.5px 1.5px at 35% 65%, var(--gold-light) 60%, transparent 61%),
+      radial-gradient(1.5px 1.5px at 65% 80%, var(--gold-light) 60%, transparent 61%),
+      radial-gradient(1.5px 1.5px at 92% 55%, var(--gold-light) 60%, transparent 61%),
+      radial-gradient(1.5px 1.5px at 22% 88%, var(--gold-light) 60%, transparent 61%),
+      radial-gradient(1.5px 1.5px at 55% 30%, var(--gold-light) 60%, transparent 61%),
+      radial-gradient(1.5px 1.5px at 5% 55%, var(--gold-light) 60%, transparent 61%);
+    opacity:.55;
+    pointer-events:none;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:radial-gradient(circle at 20% 0%, var(--purple-soft), var(--purple-deep) 60%);
+    color:var(--cream);
+    padding:64px 0 56px;
+    overflow:hidden;
+  }
+  .hero-inner{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:40px;
+    align-items:center;
+    position:relative;
+    z-index:1;
+  }
+  .eyebrow{
+    display:inline-block;
+    font-family:'Caveat', cursive;
+    font-size:1.35rem;
+    color:var(--gold-light);
+    margin-bottom:14px;
+    transform:rotate(-2deg);
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 3.6vw, 2.9rem);
+    color:#fff;
+    letter-spacing:-.01em;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--gold-light);
+  }
+  .hero .sub{
+    margin-top:18px;
+    font-size:1.08rem;
+    max-width:46ch;
+    color:#E7DEF7;
+  }
+  .cta-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-top:28px;
+    background:var(--gold);
+    color:var(--ink);
+    font-weight:700;
+    font-size:1.05rem;
+    padding:16px 30px;
+    border-radius:8px;
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+    box-shadow:0 10px 24px rgba(227,178,60,.25);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .cta-btn:hover{ transform:translateY(-2px); box-shadow:0 14px 30px rgba(227,178,60,.35); }
+  .cta-note{
+    margin-top:12px;
+    font-size:.9rem;
+    color:#C9BCE8;
+  }
+  .hero-art{ position:relative; }
+  .hero-art img{ border-radius:14px; }
+
+  /* ---------- SECTION SHELLS ---------- */
+  section{ padding:64px 0; }
+  .section-cream{ background:var(--cream); }
+  .section-dim{ background:var(--cream-dim); }
+  .kicker{
+    font-family:'Caveat', cursive;
+    font-size:1.3rem;
+    color:var(--crimson);
+    transform:rotate(-1.5deg);
+    display:inline-block;
+    margin-bottom:6px;
+  }
+  h2.section-title{
+    font-size:clamp(1.6rem, 2.6vw, 2.15rem);
+    max-width:22ch;
+    margin-bottom:16px;
+  }
+  .lede{
+    font-size:1.05rem;
+    max-width:62ch;
+    color:#3A2F55;
+    margin-bottom:36px;
+  }
+
+  /* steps (legit sequence) */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+  }
+  .step{
+    background:#fff;
+    border:1px solid #E7DFCB;
+    border-radius:12px;
+    padding:22px 20px;
+  }
+  .step .n{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.5rem;
+    color:var(--gold);
+    margin-bottom:8px;
+  }
+  .step h3{ font-size:1.05rem; margin-bottom:6px; font-weight:600;}
+  .step p{ font-size:.94rem; color:#4B4160; }
+
+  /* blocks grid */
+  .blocks{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    margin-bottom:28px;
+  }
+  .block-card{
+    background:var(--purple-deep);
+    color:var(--cream);
+    border-radius:14px;
+    padding:26px 24px;
+    position:relative;
+    overflow:hidden;
+  }
+  .block-card .tag{
+    display:inline-block;
+    font-size:.75rem;
+    font-weight:700;
+    letter-spacing:.02em;
+    background:var(--gold);
+    color:var(--ink);
+    padding:4px 10px;
+    border-radius:100px;
+    margin-bottom:12px;
+  }
+  .block-card h3{
+    font-size:1.15rem;
+    color:#fff;
+    margin-bottom:8px;
+  }
+  .block-card p{ font-size:.93rem; color:#D8CCEF; }
+  .card-note{
+    background:#fff;
+    border:1px dashed #C9BCE8;
+    border-radius:12px;
+    padding:18px 22px;
+    font-size:.95rem;
+    color:#3A2F55;
+  }
+
+  /* audience list */
+  .audience{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px 28px;
+  }
+  .audience li{
+    list-style:none;
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    font-size:.98rem;
+    padding:14px 0;
+    border-bottom:1px solid #E1D6C0;
+  }
+  .audience li::before{
+    content:"✦";
+    color:var(--crimson);
+    font-size:1rem;
+    line-height:1.4;
+    flex-shrink:0;
+  }
+  ul.audience{ padding:0; margin:0; }
+
+  /* como funciona */
+  .flow{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .flow .step .n{ color:var(--purple-soft); }
+
+  /* receive checklist */
+  .receive{
+    background:#fff;
+    border:1px solid #E7DFCB;
+    border-radius:14px;
+    padding:30px 32px;
+  }
+  .receive ul{ list-style:none; margin:0; padding:0; }
+  .receive li{
+    display:flex;
+    gap:12px;
+    padding:11px 0;
+    border-bottom:1px solid #EFE8D6;
+    font-size:.98rem;
+  }
+  .receive li:last-child{ border-bottom:none; }
+  .receive li::before{
+    content:"";
+    width:18px; height:18px;
+    margin-top:2px;
+    flex-shrink:0;
+    border-radius:5px;
+    background:var(--green);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3 8.5L6.5 12L13 4.5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:center;
+  }
+
+  /* bonus */
+  .bonus-section{
+    background:var(--purple-deep);
+    color:var(--cream);
+    position:relative;
+  }
+  .bonus-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:26px;
+    position:relative;
+    z-index:1;
+  }
+  .bonus-card{
+    background:linear-gradient(160deg, var(--purple-soft), var(--purple-mid));
+    border:2px solid var(--gold);
+    border-radius:16px;
+    padding:30px 26px;
+    position:relative;
+  }
+  .bonus-seal{
+    position:absolute;
+    top:-16px; right:22px;
+    background:var(--gold);
+    color:var(--ink);
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:.8rem;
+    padding:7px 16px;
+    border-radius:100px;
+    transform:rotate(4deg);
+    box-shadow:0 6px 14px rgba(0,0,0,.25);
+  }
+  .bonus-card h3{ color:#fff; font-size:1.25rem; margin:10px 0 10px;}
+  .bonus-card p{ color:#DCD0F2; font-size:.95rem; }
+  .bonus-price{
+    margin-top:18px;
+    font-size:.92rem;
+    color:var(--gold-light);
+  }
+  .bonus-price s{ color:#B6A8D9; margin-right:6px; }
+
+  /* offer */
+  #oferta{
+    background:radial-gradient(circle at 80% 10%, var(--purple-soft), var(--purple-deep) 55%);
+    color:var(--cream);
+    padding:70px 0 80px;
+    position:relative;
+  }
+  .offer-card{
+    max-width:620px;
+    margin:0 auto;
+    background:#fff;
+    color:var(--ink);
+    border-radius:20px;
+    padding:42px 40px;
+    position:relative;
+    z-index:1;
+    box-shadow:0 30px 60px rgba(0,0,0,.35);
+  }
+  .offer-card h2{ text-align:center; font-size:1.6rem; margin-bottom:6px;}
+  .offer-sub{ text-align:center; color:#5A4E78; font-size:.95rem; margin-bottom:26px;}
+  .offer-list{ list-style:none; margin:0 0 28px; padding:0; }
+  .offer-list li{
+    display:flex; gap:10px; align-items:flex-start;
+    font-size:.95rem;
+    padding:9px 0;
+    border-bottom:1px solid #F0EAD9;
+  }
+  .offer-list li::before{
+    content:"✓";
+    color:var(--green);
+    font-weight:800;
+    flex-shrink:0;
+  }
+  .price-row{
+    text-align:center;
+    margin:22px 0 8px;
+  }
+  .price-old{
+    color:#9A8FB5;
+    text-decoration:line-through;
+    font-size:1.05rem;
+    margin-right:10px;
+  }
+  .price-new{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:2.4rem;
+    color:var(--ink);
+  }
+  .price-new sup{ font-size:1.1rem; top:-0.9em; }
+  .price-tag{ text-align:center; font-size:.85rem; color:#5A4E78; margin-bottom:22px;}
+  .offer-cta{
+    display:block;
+    width:100%;
+    text-align:center;
+    background:var(--gold);
+    color:var(--ink);
+    font-weight:700;
+    font-size:1.1rem;
+    padding:17px;
+    border-radius:10px;
+    text-decoration:none;
+  }
+  .guarantee{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    justify-content:center;
+    margin-top:18px;
+    font-size:.88rem;
+    color:#5A4E78;
+  }
+
+  footer{
+    background:var(--ink);
+    color:#B6A8D9;
+    padding:28px 0;
+    font-size:.82rem;
+    text-align:center;
+  }
+  footer a{ color:var(--gold-light); text-decoration:underline; }
+
+  @media (max-width: 860px){
+    .hero-inner{ grid-template-columns:1fr; }
+    .hero-art{ order:-1; }
+    .steps{ grid-template-columns:1fr 1fr; }
+    .blocks{ grid-template-columns:1fr; }
+    .audience{ grid-template-columns:1fr; }
+    .flow{ grid-template-columns:1fr; }
+    .bonus-grid{ grid-template-columns:1fr; }
+    .offer-card{ padding:32px 22px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="stars"></div>
+    <div class="wrap hero-inner">
+      <div>
+        <span class="eyebrow">baralho imprimível · 40 truques · entrega imediata</span>
+        <h1>Um baralho com 40 truques de mágica pra fazer a festa infantil <em>de forma fácil</em></h1>
+        <p class="sub">40 truques organizados por nível de dificuldade, cada um com o passo a passo explicado e o segredo revelado. Sorteia um truque, aprende em minutos e já sai encantando a criançada.</p>
+        <a href="#oferta" class="cta-btn">Quero o baralho por R$ 9,90</a>
+        <p class="cta-note">Pagamento único · PDF pronto pra imprimir</p>
+      </div>
+      <div class="hero-art">
+        <img src="mockup.png" alt="Baralho de Truques de Mágica para Festa Infantil, com cartas em leque, caixa e varinha">
+      </div>
+    </div>
+  </section>
+
+  <!-- O QUE É ISSO -->
+  <section class="section-cream">
+    <div class="wrap">
+      <span class="kicker">o que é isso</span>
+      <h2 class="section-title">Não é curso de mágico profissional. É pra aprender um truque rápido e aplicar na hora.</h2>
+      <p class="lede">Você não precisa estudar mágica por anos pra impressionar numa festa. O baralho é um PDF de 40 cartas — cada uma com um truque, o passo a passo de execução e o segredo revelado, prontas pra aprender em poucos minutos.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="n">01</div>
+          <h3>Escolhe o nível</h3>
+          <p>Iniciante, intermediário, avançado ou grande efeito.</p>
+        </div>
+        <div class="step">
+          <div class="n">02</div>
+          <h3>Sorteia uma carta</h3>
+          <p>Cada carta é um truque completo e independente.</p>
+        </div>
+        <div class="step">
+          <div class="n">03</div>
+          <h3>Aprende e treina</h3>
+          <p>Passo a passo claro, sem enrolação, pronto pra praticar antes da festa.</p>
+        </div>
+        <div class="step">
+          <div class="n">04</div>
+          <h3>Aplica e encanta</h3>
+          <p>Simples de executar, com efeito garantido de surpresa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O QUE VEM NO BARALHO -->
+  <section class="section-dim">
+    <div class="wrap">
+      <span class="kicker">o que vem no baralho</span>
+      <h2 class="section-title">4 blocos por nível, 10 truques em cada um</h2>
+      <div class="blocks" style="margin-top:32px;">
+        <div class="block-card">
+          <span class="tag">Bloco 1</span>
+          <h3>Truques com Objetos do Dia a Dia</h3>
+          <p>Usando itens que qualquer pessoa já tem em casa.</p>
+        </div>
+        <div class="block-card">
+          <span class="tag">Bloco 2</span>
+          <h3>Truques com Cartas</h3>
+          <p>Os clássicos de baralho, explicados passo a passo.</p>
+        </div>
+        <div class="block-card">
+          <span class="tag">Bloco 3</span>
+          <h3>Truques com Moedas e Dedos</h3>
+          <p>Pequenas ilusões de mão, fáceis de dominar rápido.</p>
+        </div>
+        <div class="block-card">
+          <span class="tag">Bloco 4</span>
+          <h3>Truques de Grande Efeito</h3>
+          <p>Os mais impactantes, ideais pra fechar a apresentação com chave de ouro.</p>
+        </div>
+      </div>
+      <p class="card-note">Cada carta traz: nome do truque, materiais necessários, passo a passo de execução e o segredo revelado.</p>
+    </div>
+  </section>
+
+  <!-- PRA QUEM É -->
+  <section class="section-cream">
+    <div class="wrap">
+      <span class="kicker">pra quem é</span>
+      <h2 class="section-title">Se você se reconhece em algum desses pontos, o baralho é pra você</h2>
+      <ul class="audience" style="margin-top:28px;">
+        <li>Vai fazer a festa de aniversário do filho e quer entreter a criançada de um jeito diferente.</li>
+        <li>É animador de festa infantil e quer ampliar o repertório de truques.</li>
+        <li>Quer aprender algo rápido pra impressionar sobrinho, neto ou afilhado.</li>
+        <li>Não tem paciência pra assistir vídeo longo explicando um truque só.</li>
+        <li>Quer um material físico pra treinar sem depender de tela.</li>
+        <li>Gosta de ter variedade — do truque simples ao de grande efeito — sem procurar em vários lugares.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="section-dim">
+    <div class="wrap">
+      <span class="kicker">como funciona</span>
+      <h2 class="section-title">Do pagamento à festa, em três passos</h2>
+      <div class="flow" style="margin-top:32px;">
+        <div class="step">
+          <div class="n">01</div>
+          <h3>Compra</h3>
+          <p>Pagamento único, recebe o PDF na hora.</p>
+        </div>
+        <div class="step">
+          <div class="n">02</div>
+          <h3>Imprime e recorta</h3>
+          <p>40 cartas em formato A6, prontas pra folha A4.</p>
+        </div>
+        <div class="step">
+          <div class="n">03</div>
+          <h3>Sorteia e treina</h3>
+          <p>Escolhe uma carta e aplica na festa quando estiver pronto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O QUE VOCÊ RECEBE -->
+  <section class="section-cream">
+    <div class="wrap">
+      <span class="kicker">o que você recebe</span>
+      <h2 class="section-title">Tudo pronto pra imprimir hoje</h2>
+      <div class="receive" style="margin-top:28px;">
+        <ul>
+          <li>40 cartas em PDF, prontas pra imprimir em casa</li>
+          <li>4 blocos por nível de dificuldade, 10 cartas cada</li>
+          <li>Passo a passo de execução e segredo revelado em cada carta</li>
+          <li>Formato A6 — 4 cartas por folha A4</li>
+          <li>Truques com materiais simples e fáceis de conseguir</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- BÔNUS -->
+  <section class="bonus-section">
+    <div class="stars"></div>
+    <div class="wrap">
+      <span class="kicker" style="color:var(--gold-light);">de brinde</span>
+      <h2 class="section-title" style="color:#fff;">Dois bônus inclusos, sem custo extra</h2>
+      <div class="bonus-grid" style="margin-top:32px;">
+        <div class="bonus-card">
+          <span class="bonus-seal">bônus 1</span>
+          <h3>Guia de Como Apresentar um Truque de Verdade</h3>
+          <p>Dicas de showmanship — como criar suspense, controlar o timing e reagir se algo sair errado — pra qualquer truque parecer ainda mais impressionante.</p>
+          <p class="bonus-price"><s>R$ 16,90</s> incluso no baralho</p>
+        </div>
+        <div class="bonus-card">
+          <span class="bonus-seal">bônus 2</span>
+          <h3>Cartela de Frases e Bordões para Encantar a Plateia</h3>
+          <p>20 frases e bordões prontos pra usar durante a apresentação, deixando o momento mais divertido e envolvente pra criançada.</p>
+          <p class="bonus-price"><s>R$ 13,90</s> incluso no baralho</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFERTA -->
+  <section id="oferta">
+    <div class="stars"></div>
+    <div class="wrap">
+      <div class="offer-card">
+        <h2>Tudo isso por R$ 9,90</h2>
+        <p class="offer-sub">Pagamento único · Entrega imediata por e-mail</p>
+        <ul class="offer-list">
+          <li>40 cartas de truques de mágica em PDF</li>
+          <li>Bloco Truques com Objetos do Dia a Dia — 10 cartas completas</li>
+          <li>Bloco Truques com Cartas — 10 cartas completas</li>
+          <li>Bloco Truques com Moedas e Dedos — 10 cartas completas</li>
+          <li>Bloco Truques de Grande Efeito — 10 cartas completas</li>
+          <li>Passo a passo e segredo revelado em cada carta</li>
+          <li>Formato A6 pronto pra imprimir</li>
+          <li>Bônus 1 — Guia de Como Apresentar um Truque de Verdade</li>
+          <li>Bônus 2 — Cartela de Frases e Bordões para Encantar a Plateia</li>
+          <li>Garantia incondicional de 7 dias</li>
+        </ul>
+        <div class="price-row">
+          <span class="price-old">R$ 40,80</span>
+          <span class="price-new">R$ 9,90</span>
+        </div>
+        <p class="price-tag">à vista, pagamento único</p>
+        <a class="offer-cta" href="https://pay.cakto.com.br/33p98tk_1083912">Quero o baralho — R$ 9,90</a>
+        <p class="guarantee">🛡️ Garantia de 7 dias. Não gostou, o dinheiro volta — sem burocracia.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      Este produto é um material recreativo de apoio para apresentações de mágica amadoras. Garantia incondicional de 7 dias.<br>
+      <a href="https://pay.cakto.com.br/33p98tk_1083912">Ir para o checkout</a>
+    </div>
+  </footer>
+
+</body>
+</html>
